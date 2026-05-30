@@ -1,97 +1,52 @@
 import Link from 'next/link';
 
-interface PageProps {
-  searchParams: { name?: string; phone?: string; date?: string; time?: string };
-}
-
-export default function ConfirmPage({ searchParams }: PageProps) {
-  const { name, phone, date, time } = searchParams;
-
+export default function ConfirmPage() {
   return (
-    <main className="min-h-screen bg-slate-50">
-      {/* Header */}
-      <header className="bg-brand-900 text-white px-6 py-4">
-        <h1 className="font-semibold text-lg text-center">Booking Received ✓</h1>
-      </header>
-
-      <div className="px-6 py-8 max-w-lg mx-auto space-y-6">
-        {/* Booking Summary */}
-        <section className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-          <h2 className="font-bold text-brand-900 mb-4">Your Booking</h2>
-          <dl className="space-y-3 text-sm">
-            <div className="flex justify-between">
-              <dt className="text-slate-500">Name</dt>
-              <dd className="font-semibold text-slate-800">{name || '—'}</dd>
-            </div>
-            <div className="flex justify-between">
-              <dt className="text-slate-500">Phone</dt>
-              <dd className="font-semibold text-slate-800">{phone || '—'}</dd>
-            </div>
-            <div className="flex justify-between">
-              <dt className="text-slate-500">Date</dt>
-              <dd className="font-semibold text-slate-800">{date || '—'}</dd>
-            </div>
-            <div className="flex justify-between">
-              <dt className="text-slate-500">Time</dt>
-              <dd className="font-semibold text-slate-800">{time || '—'}</dd>
-            </div>
-            <div className="flex justify-between">
-              <dt className="text-slate-500">Status</dt>
-              <dd className="font-semibold text-amber-600">Pending confirmation</dd>
-            </div>
-          </dl>
-        </section>
-
-        {/* Payment Instructions */}
-        <section className="bg-teal-50 border-2 border-teal-400 rounded-2xl p-6">
-          <h2 className="font-bold text-teal-700 text-base mb-4">💳 How to Pay</h2>
-          <p className="text-slate-600 text-sm mb-4">
-            Please send the session fee to Dr. Saad using one of the methods below, then wait for confirmation.
-          </p>
-
-          <div className="space-y-4">
-            {/* Vodafone Cash */}
-            <div className="bg-white rounded-xl p-4 border border-teal-200">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-xl">📱</span>
-                <span className="font-bold text-slate-800">Vodafone Cash</span>
-              </div>
-              <p className="text-sm text-slate-600">
-                Send to number: <span className="font-bold text-brand-700">01XXXXXXXXX</span>
-              </p>
-              <p className="text-xs text-slate-400 mt-1">Name: Dr. Saad El Mahdy</p>
-            </div>
-
-            {/* InstaPay */}
-            <div className="bg-white rounded-xl p-4 border border-teal-200">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-xl">🏦</span>
-                <span className="font-bold text-slate-800">InstaPay</span>
-              </div>
-              <p className="text-sm text-slate-600">
-                IPA: <span className="font-bold text-brand-700">drsaad@instapay</span>
-              </p>
-              <p className="text-xs text-slate-400 mt-1">Name: Dr. Saad El Mahdy</p>
-            </div>
+    <main className="min-h-screen bg-gray-50 px-5 py-12">
+      <div className="max-w-md mx-auto">
+        <div className="text-center mb-8">
+          <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-green-100 flex items-center justify-center">
+            <svg className="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
           </div>
-        </section>
-
-        {/* Next Steps */}
-        <section className="bg-brand-50 border border-brand-100 rounded-2xl p-5">
-          <h3 className="font-semibold text-brand-900 mb-2">What happens next?</h3>
-          <ol className="text-sm text-slate-600 space-y-1 list-decimal list-inside">
-            <li>Send payment using one of the methods above.</li>
-            <li>Dr. Saad will review and confirm your session.</li>
-            <li>You&apos;ll receive a WhatsApp message with your meeting link.</li>
-          </ol>
-        </section>
-
-        <Link
-          href="/"
-          className="block text-center text-brand-600 font-medium text-sm py-2"
-        >
-          ← Back to Home
-        </Link>
+          <h1 className="text-2xl font-bold text-gray-900">Booking Received!</h1>
+          <p className="text-gray-500 mt-2 text-sm leading-relaxed">Dr. Saad will confirm your session after payment is received.</p>
+        </div>
+        <div className="flex flex-col gap-4">
+          <h2 className="font-bold text-gray-800 text-lg">Pay to confirm your session</h2>
+          <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center">
+                <span className="text-red-600 font-bold text-sm">VC</span>
+              </div>
+              <p className="font-semibold text-gray-900">Vodafone Cash</p>
+            </div>
+            <p className="text-sm text-gray-500 mb-1">Send payment to:</p>
+            <p className="text-xl font-bold text-gray-900 tracking-wide">01006060175</p>
+            <p className="text-xs text-gray-400 mt-1">Open Vodafone Cash app → Send Money → Enter number</p>
+          </div>
+          <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                <span className="text-blue-600 font-bold text-sm">IP</span>
+              </div>
+              <p className="font-semibold text-gray-900">InstaPay</p>
+            </div>
+            <p className="text-sm text-gray-500 mb-1">Send payment to IPA:</p>
+            <p className="text-xl font-bold text-gray-900 tracking-wide">drsaad@instapay</p>
+            <p className="text-xs text-gray-400 mt-1">Open InstaPay app → Pay → Enter IPA address</p>
+          </div>
+          <div className="bg-blue-50 rounded-2xl p-4 border border-blue-100">
+            <p className="text-sm text-blue-800 font-medium">📱 What happens next?</p>
+            <ul className="mt-2 text-sm text-blue-700 flex flex-col gap-1">
+              <li>• Send the payment screenshot to Dr. Saad</li>
+              <li>• He will confirm your session within a few hours</li>
+              <li>• You will receive the video call link</li>
+            </ul>
+          </div>
+        </div>
+        <Link href="/" className="mt-8 block text-center text-blue-600 font-medium text-sm">← Back to home</Link>
       </div>
     </main>
   );
